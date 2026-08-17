@@ -1,4 +1,4 @@
-# UCS503P Project Template
+# UCS503P Project Template for Thapar Auto
 
 This is a project template for UCS503P Project (2026-27
 ODD). 
