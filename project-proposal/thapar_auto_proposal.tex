@@ -23,7 +23,7 @@
   \small Department of Computer Science and Engineering \\
   \small Thapar Institute of Engineering and Technology
 }
-\date{Submitted to: [Dr.Jeelani Asif] \\ Course: [UCS503] \\ \today}
+\date{Submitted to: Dr.Jeelani Asif \\ Course: UCS503 \\ \today}
 
 \begin{document}
 
@@ -31,10 +31,14 @@
 \thispagestyle{empty}
 \vspace{0.5em}
 
-\section{Introduction and Problem Statement}
-Getting around the Thapar campus by shared auto-rickshaw is something almost every student relies on daily, but the process of actually finding one is entirely informal. Students wait at fixed points hoping an auto with free seats happens to pass by, drivers have no visibility into where demand is building up elsewhere on campus, and there is no way to know in advance whether a seat will even be available. This leads to long, unpredictable waits at some stops while autos elsewhere sit idle or under-filled, and to disputes over fare and change that a fixed, published per-seat rate would remove entirely.
+\section*{Abstract}
+Shared auto-rickshaws are the primary way students move around the Thapar campus, but booking one today is entirely informal: students wait at fixed points hoping a free seat passes by, drivers have no visibility into demand elsewhere, and fares are settled by negotiation rather than a fixed rate. This proposal presents Campus Ride, a two-sided mobile application built in Flutter for Android and the web that digitizes this process end to end. Students select a pickup and drop stop and are automatically pooled onto an auto already en route in the right direction, or matched to the next auto in a fair, cyclic idle queue if no such match exists; drivers get a simple dashboard showing their queue position or live passenger manifest. A Node.js/Express backend with a SQLite database handles matching and booking records, while Firebase provides Google Sign-In restricted to \texttt{@thapar.edu} accounts and phone-OTP verification for drivers. The result is a structured, visible replacement for today's wait-and-hope system, deliverable over a 12-week timeline using only free-tier tools.
 
-Campus Ride is proposed to close this gap. It is a mobile application, built with Flutter so the same codebase runs on Android and the web, that digitizes campus auto booking for both riders and drivers. Students pick a pickup and drop stop and are automatically matched to an available auto --- either one already on the road passing their stop, or the next one waiting in a queue --- while drivers get a simple dashboard showing their current trip, passenger list, and queue position. The goal is to replace guesswork and informal waiting with a shared, visible booking system, the same way ride-hailing apps replaced hailing a cab on the street.
+\section{Introduction}
+Campus Ride is proposed to digitize campus auto booking for both riders and drivers. It is a mobile application, built with Flutter so the same codebase runs on Android and the web, that lets students pick a pickup and drop stop and be automatically matched to an available auto --- either one already on the road passing their stop, or the next one waiting in a queue --- while drivers get a simple dashboard showing their current trip, passenger list, and queue position. The goal is to replace guesswork and informal waiting with a shared, visible booking system, the same way ride-hailing apps replaced hailing a cab on the street.
+
+\section{Problem Statement}
+Getting around the Thapar campus by shared auto-rickshaw is something almost every student relies on daily, but the process of actually finding one is entirely informal. Students wait at fixed points hoping an auto with free seats happens to pass by, drivers have no visibility into where demand is building up elsewhere on campus, and there is no way to know in advance whether a seat will even be available. This leads to long, unpredictable waits at some stops while autos elsewhere sit idle or under-filled, and to disputes over fare and change that a fixed, published per-seat rate would remove entirely.
 
 \section{Objectives}
 The primary goal of this project is to build a two-sided mobile application that digitizes campus auto booking, automatically pools students into autos already en route where possible, and gives drivers a simple queue-based dispatch system, replacing today's informal wait-and-hope process with one structured and visible platform.
@@ -106,5 +110,8 @@ The interface has to stay simple enough for a quick booking between classes, so 
 \textbf{Material resources:} No specialized hardware is needed. The project uses Firebase's free Spark tier for authentication during development (with Google Sign-In already functional; real SMS delivery for driver OTPs requires upgrading to Firebase's pay-as-you-go Blaze plan before a live rollout), a local SQLite database for the prototype backend, and free-tier hosting (e.g., Render) planned for deployment.
 
 \textbf{Budget:} No external funding is required for development or a small pilot. Every tool and service used --- authentication, database, and hosting --- is available on a free tier; the only anticipated future cost is Firebase SMS charges beyond the free monthly quota once phone verification moves from test numbers to real student and driver traffic.
+
+\section{Summary}
+Getting a shared auto around Thapar campus currently means waiting at a stop and hoping one with a free seat passes by, with no visibility for students into wait times or for drivers into where demand is building. Campus Ride replaces this informal process with a two-sided mobile app, built in Flutter for both Android and web, that lets students book a seat by choosing a pickup and drop stop and automatically pools them onto an auto already en route in the right direction, or dispatches the next auto from a fair, cyclic idle queue if no such match exists. Drivers get a simple dashboard showing their queue position or live passenger manifest, and students see their driver's contact details, vehicle number, and UPI QR code once a booking is confirmed, so fares are fixed and disputes are eliminated. The system is built on a Node.js/Express backend with a SQLite database, using Firebase for Google Sign-In (restricted to \texttt{@thapar.edu} accounts) and driver phone-OTP verification. Over a 12-week timeline, the project moves from backend and authentication setup through the matching engine, driver and student interfaces, and end-to-end testing on both web and Android, using only free-tier tools and requiring no external funding.
 
 \end{document}
