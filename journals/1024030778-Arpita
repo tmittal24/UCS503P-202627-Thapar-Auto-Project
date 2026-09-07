@@ -1,0 +1,32 @@
+Week 1 — Project Pitch Deck
+
+Owned the user-experience framing in the pitch, arguing the app only works if booking is faster than flagging down an auto in person.
+
+Sketched the student journey the deck would promise: pick pickup and drop, pick number of seats, see what's available right now, book, pay. Kept it to a single linear flow with no account setup friction.
+Made the case for restricting sign-in to @thapar.edu accounts via Google so the rider base stays students and there is no separate password system to build or secure.
+Argued for two clearly separated roles from the start — student and driver — rather than one app trying to be both, since their screens and needs barely overlap.
+
+Week 2 — Project Proposal
+
+Wrote the frontend section of the proposal and locked the client stack.
+
+Specified Flutter for a single codebase across Android and web, with Provider for state, http for the API, and shared_preferences to persist the session so a returning user lands straight in their role instead of the role picker.
+Chose Firebase Auth with Google Sign-In for identity, and documented that the backend still independently checks the @thapar.edu domain on student creation — the client restriction is convenience, the server restriction is the actual rule.
+Planned the screen inventory: a role-select screen, student login/home/trip-status/payment screens, and driver login/dashboard screens, plus shared widgets (location dropdown, seat selector, primary button) so the two roles stay visually consistent.
+Made a scope cut: no push notifications in this stage. Trip status is checked by pulling from the API when the student opens the status screen, documented as a deliberate simplification rather than a missing feature.
+
+Week 3 — Student Booking Flow and Live Availability
+
+Built the end-to-end student path from stop selection through to a confirmed booking.
+
+Booking screen
+
+Built the home screen around the location dropdown and seat selector widgets, loading the fixed stop list from the /locations endpoint so the ordering always matches what the backend uses for direction.
+Wired the availability preview: as soon as pickup, drop, and seat count are set, the screen calls /availability and shows the student both the enroute autos they could pool onto (with remaining seats each) and whether a fresh auto is available — without committing to anything yet.
+Guarded the obvious bad input on the client — same pickup and drop, zero seats — so the student sees an inline message instead of a raw backend error, while leaving the backend validation in place as the real gate.
+
+Trip status and payment
+
+Built the trip-status screen to show whether the booking was pooled onto an existing auto or dispatched fresh, using the pooled flag the booking response returns, so the student understands why another rider might already be aboard.
+Built the payment screen around the driver's uploaded UPI QR image served from the backend, plus the flat fare (seats times the per-seat rate) read straight from the booking, and marked payment as pending until confirmed rather than assuming success.
+Centralized every network call in a single api_service so base URL and error handling live in one place, after an early version had endpoint strings scattered across screens that broke when the API host changed.
