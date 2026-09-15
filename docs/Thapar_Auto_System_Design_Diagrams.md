@@ -205,14 +205,3 @@ the back of the idle queue).
 
 ---
 
-## 5. Project Gantt Chart
-
-A project Gantt chart covering requirements, design, backend/frontend development,
-integration, testing, and deployment is provided as a separate file:
-`gantt_chart.pdf`.
-
-## 6. Prototype Document
-
-A screen-by-screen prototype document (LaTeX source and compiled PDF) describing
-every app screen, its purpose, key elements, and navigation flow is provided as
-`prototype_document.tex` / `prototype_document.pdf`.
