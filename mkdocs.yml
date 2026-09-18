@@ -1,13 +1,13 @@
-site_name: "UCS503 : Software Engineering : Project Template"
-site_url: https://tiet-ucs503.github.io/ucs503p-202627odd-template
+site_name: "Thapar Auto"
+site_url: https://tmittal24.github.io/UCS503P-202627-Thapar-Auto-Project
 
 plugins:
 - search
 # - gen-files:
 #     scripts:
 #     - scripts/gen_ref_pages.py
-- literate-nav:
-    nav_file: summary.md
+# - literate-nav:
+#     nav_file: summary.md
 - section-index
 - git-revision-date-localized
 # - git-committers:
@@ -41,19 +41,20 @@ theme:
     repo: fontawesome/brands/github
     annotation: material/plus-circle-outline
   palette:
-    primary: amber
-    accent: orange
+    - scheme: slate
+      primary: black
+      accent: indigo
   logo: assets/tiet-logo.svg
   favicon: assets/favicon.png
 
-repo_url: https://github.com/tiet-ucs503/ucs503p-202627odd-template
-repo_name: ucs503p-202627odd-template
-copyright: "Copyright &copy; 2025 <a href='https://bvraghav.com/'>Raghav B. Venkataramaiyer</a> &lt;<code style='color:inherit; background:transparent'>bv.raghav</code>&gt;"
+repo_url: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
+repo_name: UCS503P-202627-Thapar-Auto-Project
+copyright: "Copyright &copy; 2026 Thapar Auto Team"
 extra:
   social:
   - icon: fontawesome/brands/github
-    link: https://github.com/tiet-ucs503/ucs503p-202627odd-template
-    name: Git Repo for UCS503P Project Template
+    link: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
+    name: Git Repo for Thapar Auto
 
 extra_css:
   - assets/stylesheets/extra.css
@@ -62,6 +63,7 @@ extra_css:
 extra_javascript:
 - https://unpkg.com/katex@0/dist/katex.min.js
 - javascript/arithmatex.js
+- https://unpkg.com/mermaid@10/dist/mermaid.min.js
 
 markdown_extensions:
   - abbr
@@ -87,6 +89,9 @@ markdown_extensions:
         - name: math
           class: arithmatex
           arithmatex: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {which: generic}
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
@@ -101,3 +106,11 @@ markdown_extensions:
   - toc:
       toc_depth: 4
   - sane_lists
+
+nav:
+  - Home: index.md
+  - System Design Diagrams: Thapar_Auto_System_Design_Diagrams.md
+  - Engineering Journals:
+      - Arpita: journals/1024030778-Arpita/index.md
+      - Trijal: journals/1024030784-Trijal/index.md
+      - Tushit: journals/1024031079-Tushit/index.md
