@@ -41,9 +41,18 @@ theme:
     repo: fontawesome/brands/github
     annotation: material/plus-circle-outline
   palette:
+    - scheme: default
+      primary: amber
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
     - scheme: slate
-      primary: black
-      accent: indigo
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   logo: assets/tiet-logo.svg
   favicon: assets/favicon.png
 
