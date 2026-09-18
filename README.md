@@ -1,45 +1,93 @@
-# UCS503P Project Template for Thapar Auto
+<p align="center">
+  <b>UCS503: Software Engineering (Project)</b><br/>
+  Thapar Institute of Engineering & Technology, Patiala
+</p>
 
-This is a project template for UCS503P Project (2026-27
-ODD). 
+# Thapar Auto: Shared Campus Auto-Rickshaw System
 
-There are 3 reports in LaTeX format, namely *a*)
-Project Proposal, *b*) Project Report Prototype Stage,
-and *c*) Project Report Final -- each in their
-respective folders.
+***A Stop-Ordered Ride Pooling, Dispatch & UPI Settlement Platform***
 
-Journals are stacked under the folder `journals`, one
-folder for each team member.  A sample entry has been
-made for example.
+[![Frontend](https://img.shields.io/badge/Frontend-Flutter%20%2F%20Dart-02569B?style=flat-square&logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Backend](https://img.shields.io/badge/Backend-Node.js%20%2F%20Express-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://expressjs.com/)
+[![Database](https://img.shields.io/badge/Database-SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Docs](https://img.shields.io/badge/Docs-MkDocs%20%2F%20LaTeX-008080?style=flat-square)](https://www.mkdocs.org/)
 
-The source code is contained within the folder `code`.
+📖 **Project Site:** [tmittal24.github.io/UCS503P-202627-Thapar-Auto-Project](https://tmittal24.github.io/UCS503P-202627-Thapar-Auto-Project)
 
-The documentation is under folder `docs`.
+---
 
-All other aspects of code organisation are left to the
-discretion of the user(s).
+## Overview
 
+Students waiting at campus auto stops have no way of knowing when the next auto will
+arrive or whether it will have room. Autos leave half-empty on some routes while students
+overflow on others, and fares are negotiated ad hoc with no fixed rate.
 
-## Docs
+Thapar Auto treats an in-progress trip as a joinable resource. A student picks a pickup
+stop, a drop stop, and a seat count; the system first searches for an auto already enroute
+in the same direction with spare seats, and only dispatches a fresh auto from a cyclic idle
+queue when nothing poolable fits. Drivers register once with their vehicle and UPI QR code,
+then run trips from a dashboard showing queue position, current riders, and trip completion.
 
-As of now, the `docs` is just an organised collection
-of markdown (`md`) files.  But the build procedure is
-using [`mkdocs`](https://google.com/search?q=mkdocs)
-backend.  As a result, any commit into the `master`
-branch of github repository would result in CI/CD based
-build and deployment of the documentation including the
-journals.
+## Team
 
-For a local DEV-version of the docs for viewing and
-testing, install the local env and issue the following
-command:
+| Role | Team Member | Roll Number |
+| :--- | :--- | :--- |
+| Backend Architect & Matching Engine Lead | Trijal | `1024030784` |
+| Frontend Architect & Student Flow Lead | Tushit | `1024031079` |
+| Driver Systems & Trip Lifecycle Lead | Arpita | `1024030778` |
 
-``` shell
-make docs
+## Tech Stack
+
+- **Frontend:** Flutter (Android + Web), Provider, `shared_preferences`
+- **Auth:** Firebase Auth + Google Sign-In, restricted to `@thapar.edu`
+- **Backend:** Node.js + Express, `multer` for QR uploads
+- **Database:** SQLite via `better-sqlite3`
+
+## Repository Layout
+
+| Path | Contents |
+| :--- | :--- |
+| [`code/`](code) | Application source — `backend/` (Express API) and `frontend/` (Flutter app) |
+| [`docs/`](docs) | System design diagrams and the MkDocs source for the project site |
+| [`journals/`](journals) | Weekly engineering journals, one folder per team member |
+| [`project-proposal/`](project-proposal) | LaTeX project proposal and compiled PDF |
+| [`project-report-prototype-stage/`](project-report-prototype-stage) | Prototype-stage evaluation report |
+| [`project-report-final/`](project-report-final) | Final project report |
+
+## Running Locally
+
+**Backend**
+
+```bash
+cd code/backend
+npm install
+npm start
 ```
 
-### Local `env` for `docs`
+**Frontend**
 
-``` shell
+```bash
+cd code/frontend
+flutter pub get
+flutter run
+```
 
+Firebase credentials (`google-services.json`) are excluded from version control and must be
+supplied locally for Google Sign-In to work.
+
+## Documentation Site
+
+`docs/` is built with [MkDocs](https://www.mkdocs.org/) using the Material theme. Any push to
+`master` triggers `.github/workflows/mkdocs.yml`, which runs `mkdocs gh-deploy` and publishes
+to the `gh-pages` branch. Ensure **Settings → Pages → Source** is set to `gh-pages` / `(root)`.
+
+Local preview:
+
+```bash
+pip install mkdocs mkdocs-material mkdocs-material-extensions mkdocstrings \
+  mkdocstrings-python mkdocs-gen-files mkdocs-literate-nav mkdocs-section-index \
+  mkdocs-click mkdocs-git-revision-date-localized-plugin \
+  mkdocs-git-committers-plugin-2 mkdocs-git-authors-plugin pymdown-extensions
+
+mkdocs serve
 ```
