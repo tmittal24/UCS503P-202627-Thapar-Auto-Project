@@ -1,54 +1,61 @@
-site_name: "Thapar Auto"
-site_url: https://tmittal24.github.io/UCS503P-202627-Thapar-Auto-Project
+site_name: Thapar Auto
+site_description: Campus auto booking and pooling for Thapar Institute, with 20 stops, seat-level booking and ride history.
+site_url: https://tmittal24.github.io/UCS503P-202627-Thapar-Auto-Project/
+
+repo_url: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
+repo_name: UCS503P-202627-Thapar-Auto-Project
 
 plugins:
-- search
-# - gen-files:
-#     scripts:
-#     - scripts/gen_ref_pages.py
-# - literate-nav:
-#     nav_file: summary.md
-- section-index
-- git-revision-date-localized
-# - git-committers:
-#     repository: "tiet-unc512/tiet-unc512.github.io"
-- git-authors
-- mkdocstrings:
-    handlers:
-      python:
-        paths: [src]
-        options:
-          summary: true
-          show_symbol_type_heading: true
-          show_symbol_type_toc: true
-          # show_object_full_path: true
-          show_root_full_path: true
-          show_root_heading: true
-          show_source: false
+  - search
+  - literate-nav:
+      nav_file: summary.md
+  - section-index
+  - git-revision-date-localized
+  - git-authors
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            summary: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_root_full_path: true
+            show_root_heading: true
+            show_source: false
 
 theme:
   name: material
   custom_dir: docs/assets/theme-overrides
+  font:
+    text: Figtree
+    code: JetBrains Mono
   features:
     - navigation.footer
-    - header.autohide
-    - content.tabs.link
+    - navigation.instant
     - navigation.tracking
     - navigation.top
-    - toc.integrate
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
     - content.tooltips
+    - header.autohide
   icon:
     repo: fontawesome/brands/github
     annotation: material/plus-circle-outline
   palette:
-    - scheme: default
-      primary: amber
-      accent: deep orange
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-    - scheme: slate
-      primary: teal
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
       accent: amber
       toggle:
         icon: material/weather-sunny
@@ -56,33 +63,34 @@ theme:
   logo: assets/tiet-logo.svg
   favicon: assets/favicon.png
 
-repo_url: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
-repo_name: UCS503P-202627-Thapar-Auto-Project
-copyright: "Copyright &copy; 2026 Thapar Auto Team"
+copyright: "UCS503P Software Engineering project, Thapar Institute of Engineering and Technology"
+
 extra:
   social:
-  - icon: fontawesome/brands/github
-    link: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
-    name: Git Repo for Thapar Auto
+    - icon: fontawesome/brands/github
+      link: https://github.com/tmittal24/UCS503P-202627-Thapar-Auto-Project
+      name: Project repository
 
 extra_css:
   - assets/stylesheets/extra.css
   - https://unpkg.com/katex@0/dist/katex.min.css
-
 extra_javascript:
-- https://unpkg.com/katex@0/dist/katex.min.js
-- javascript/arithmatex.js
-- https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - javascript/arithmatex.js
 
 markdown_extensions:
   - abbr
-  - md_in_html
+  - admonition
   - attr_list
+  - md_in_html
+  - footnotes
+  - sane_lists
   - toc:
       permalink: true
-  - footnotes
+      toc_depth: 4
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -92,12 +100,11 @@ markdown_extensions:
         - name: math
           class: arithmatex
           format: !!python/object/apply:pymdownx.arithmatex.arithmatex_inline_format {which: generic}
-  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: math
           class: arithmatex
-          arithmatex: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {which: generic}
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {which: generic}
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
@@ -111,15 +118,3 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
-  # - mkdocs-click
-  - toc:
-      toc_depth: 4
-  - sane_lists
-
-nav:
-  - Home: index.md
-  - System Design Diagrams: Thapar_Auto_System_Design_Diagrams.md
-  - Engineering Journals:
-      - Arpita: journals/1024030778-Arpita/index.md
-      - Trijal: journals/1024030784-Trijal/index.md
-      - Tushit: journals/1024031079-Tushit/index.md
